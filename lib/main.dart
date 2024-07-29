@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             child: AnimatedBuilder(
               animation: _animation,
               builder: (context, child) {
-                double iconSize = 30;
+                double iconSize = 25;
                 return Transform.translate(
                   offset: Offset(0, _isLiked ? _animation.value : 0),
                   child: AnimatedContainer(
