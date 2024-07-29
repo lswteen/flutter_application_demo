@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -8,7 +7,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,8 +28,27 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   int _counter = 0;
+  bool _isLiked = false;
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+    _animation = Tween<double>(begin: 0, end: -100).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut)
+    )..addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reset();
+      }
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -40,12 +57,19 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _likeButtonPressed() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Liked!'),
-        duration: Duration(seconds: 1), // 추가: Snackbar가 사라지는 시간을 조정
-      ),
-    );
+    setState(() {
+      _isLiked = !_isLiked;
+    });
+
+    if (_isLiked) {
+      _controller.forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -55,19 +79,46 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'You have pushed the button this many times:',
+                ),
+                Text(
+                  '$_counter',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          Positioned(
+            right: 30,
+            bottom: 100,
+            child: AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                double iconSize = 30;
+                return Transform.translate(
+                  offset: Offset(0, _isLiked ? _animation.value : 0),
+                  child: AnimatedContainer(
+                    duration: const Duration(seconds: 1),
+                    width: iconSize,
+                    height: iconSize,
+                    child: Icon(
+                      Icons.favorite,
+                      color: _isLiked ? Colors.red : Colors.grey,
+                      size: iconSize,
+                    ),
+                  ),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: Stack(
         alignment: Alignment.bottomRight,
@@ -77,18 +128,20 @@ class _MyHomePageState extends State<MyHomePage> {
             child: FloatingActionButton(
               onPressed: _likeButtonPressed,
               tooltip: 'Like',
-              child: const Icon(Icons.thumb_up),
+              child: Icon(
+                _isLiked ? Icons.favorite : Icons.favorite_border,
+                color: _isLiked ? Colors.red : Colors.grey,
+                size: 25,
+              ),
             ),
           ),
           FloatingActionButton(
             onPressed: _incrementCounter,
             tooltip: 'Increment',
             child: const Icon(Icons.add),
-          )
+          ),
         ],
       ),
-
-      // This trailing comma makes auto-formatting nicer for build methods.
       bottomNavigationBar: BottomAppBar(
         color: Theme.of(context).colorScheme.primary,
         child: Padding(
