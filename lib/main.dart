@@ -12,7 +12,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // 기존 테마 설정을 다크 모드로 변경
+        brightness: Brightness.dark, // 10번 라인: 다크 모드 설정 추가
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.dark, // 13번 라인: 다크 모드에 맞게 색상 팔레트 설정
+        ),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo'),
@@ -42,12 +47,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       vsync: this,
     );
     _animation = Tween<double>(begin: 0, end: -100).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut)
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     )..addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        _controller.reset();
-      }
-    });
+        if (status == AnimationStatus.completed) {
+          _controller.reset();
+        }
+      });
   }
 
   void _incrementCounter() {
@@ -79,6 +84,41 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.deepPurple,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white, // 88번 라인: 텍스트 색상을 흰색으로 설정하여 다크 모드에 맞춤
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                // Implement navigation to Home page
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                // Implement navigation to Settings page
+              },
+            ),
+          ],
+        ),
+      ),
       body: Stack(
         children: [
           Center(
@@ -96,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             ),
           ),
           Positioned(
-            right: 30,
+            right: 32,
             bottom: 100,
             child: AnimatedBuilder(
               animation: _animation,
@@ -148,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           padding: const EdgeInsets.all(16.0),
           child: Text(
             'Bottom App Bar',
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: TextStyle(color: Colors.white, fontSize: 18), // 167번 라인: 텍스트 색상을 흰색으로 설정하여 다크 모드에 맞춤
             textAlign: TextAlign.center,
           ),
         ),
