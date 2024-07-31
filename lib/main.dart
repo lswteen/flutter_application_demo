@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Green Market'),
+      routes: {
+        '/person': (context) => const PersonPage(), // PersonPage 라우트 설정
+      },
     );
   }
 }
@@ -113,7 +116,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               title: const Text('Person'),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
-                // Implement navigation to Person page
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Navigator.pushNamed(context, '/person');
+                });
+                //Navigator.pop(context);
               },
             ),
             ListTile(
@@ -208,6 +214,22 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             textAlign: TextAlign.center,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PersonPage extends StatelessWidget {
+  const PersonPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Person Page'),
+      ),
+      body: Center(
+        child: const Text('This is the Person Page'),
       ),
     );
   }
