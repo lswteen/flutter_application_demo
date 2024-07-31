@@ -15,12 +15,12 @@ class MyApp extends StatelessWidget {
         // 기존 테마 설정을 다크 모드로 변경
         brightness: Brightness.dark, // 10번 라인: 다크 모드 설정 추가
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
+          seedColor: Colors.teal,
           brightness: Brightness.dark, // 13번 라인: 다크 모드에 맞게 색상 팔레트 설정
         ),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo'),
+      home: const MyHomePage(title: 'Green Market'),
     );
   }
 }
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           children: <Widget>[
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.deepPurple,
+                color: Colors.teal,
               ),
               child: Text(
                 'Menu',
@@ -106,6 +106,22 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 // Implement navigation to Home page
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Person'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                // Implement navigation to Person page
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.search),
+              title: const Text('Search'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                // Implement navigation to Search page
               },
             ),
             ListTile(
