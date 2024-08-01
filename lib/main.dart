@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               child: Text(
                 'Menu',
                 style: TextStyle(
-                  color: Colors.white, // 88번 라인: 텍스트 색상을 흰색으로 설정하여 다크 모드에 맞춤
+                  color: Colors.white, 
                   fontSize: 24,
                 ),
               ),
@@ -210,7 +210,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           padding: const EdgeInsets.all(16.0),
           child: Text(
             'Bottom App Bar',
-            style: TextStyle(color: Colors.white, fontSize: 18), // 167번 라인: 텍스트 색상을 흰색으로 설정하여 다크 모드에 맞춤
+            style: TextStyle(color: Colors.white, fontSize: 18), 
             textAlign: TextAlign.center,
           ),
         ),
