@@ -4,6 +4,7 @@ import 'models/counter.dart';
 import 'ui/my_home_page.dart';
 import 'ui/person_page.dart';
 import 'ui/search_page.dart';
+import 'ui/recipe_page.dart';
 
 void main() {
   runApp(
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/person': (context) => const PersonPage(),
         '/search': (context) => const SearchPage(),
+        '/recipe': (context) => const RecipePage(),  // 추가된 라우트
       },
     );
   }
