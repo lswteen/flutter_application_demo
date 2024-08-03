@@ -43,6 +43,9 @@ class CustomDrawer extends StatelessWidget {
             title: const Text('Search'),
             onTap: () {
               Navigator.pop(context);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                Navigator.pushNamed(context, '/search');
+              });
             },
           ),
           ListTile(
