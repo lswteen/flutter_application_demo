@@ -23,6 +23,10 @@ class _SearchPageState extends State<SearchPage> {
     Item('Fig', 'A sweet fruit with a unique texture'),
     Item('Grape', 'A small juicy fruit often used to make wine'),
     Item('Honeydew', 'A sweet green melon'),
+    Item('유나', '엄마한테 혼나고있음'),
+    Item('우진', '살찌고 있음'),
+    Item('아빠', '못생겼다고 놀림당하고있음'),
+    
   ];
   List<Item> _filteredItems = [];
 
