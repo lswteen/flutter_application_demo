@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'Green Market'),
       routes: {
+        '/home' : (context) => const MyHomePage(title: 'Green Market'),
         '/person': (context) => const PersonPage(),
         '/search': (context) => const SearchPage(),
         '/recipe': (context) => const RecipePage(),  // 추가된 라우트
