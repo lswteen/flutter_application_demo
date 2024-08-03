@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_bottom_app_bar.dart';
 import '../models/item.dart';
+import 'item_detail_page.dart';
 
 
 class SearchPage extends StatefulWidget {
@@ -94,6 +95,14 @@ class _SearchPageState extends State<SearchPage> {
                       child: ListTile(
                         title: Text(item.title),
                         subtitle: Text(item.description),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ItemDetailPage(item: item),
+                            ),
+                          );
+                        },
                       ),
                     );
                   } else if (index == _itemsToShow && _showMoreButton) {
