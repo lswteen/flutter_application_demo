@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/counter.dart';
 import '../widgets/custom_drawer.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/custom_bottom_app_bar.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;
@@ -30,10 +32,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+      appBar: CustomAppBar(title: widget.title),
       drawer: const CustomDrawer(),
       body: Stack(
         children: [
@@ -107,17 +106,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           ),
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Theme.of(context).colorScheme.primary,
-        child: const Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text(
-            'Bottom App Bar',
-            style: TextStyle(color: Colors.white, fontSize: 18),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
+    bottomNavigationBar: const CustomBottomAppBar(),
     );
   }
 }
