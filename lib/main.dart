@@ -44,7 +44,8 @@ class MyApp extends StatelessWidget {
         '/home' : (context) => const MyHomePage(title: 'Green Market'),
         '/person': (context) => const PersonPage(),
         '/search': (context) => const SearchPage(),
-        '/recipe': (context) => const RecipePage(),  // 추가된 라우트
+        '/recipe': (context) => const RecipePage(),  
+        '/recommendation': (context) => const FoodListPage(),
       },
     );
   }

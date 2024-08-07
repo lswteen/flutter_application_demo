@@ -1,9 +1,16 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 import '../models/food_provider.dart';
 import '../models/food.dart';
+
+import 'package:flutter/material.dart';
+
+import '../widgets/custom_app_bar.dart';
+import '../widgets/custom_bottom_app_bar.dart';
+import '../widgets/custom_drawer.dart';  // CustomDrawer import 추가
+
 
 class FoodListPage extends StatefulWidget {
   const FoodListPage({Key? key}) : super(key: key);
@@ -30,7 +37,7 @@ class _FoodListPageState extends State<FoodListPage> {
       });
     });
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       _timer?.cancel();
       setState(() {
         _isAnimating = false;
@@ -50,7 +57,8 @@ class _FoodListPageState extends State<FoodListPage> {
     _foods = foodProvider.foods;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Food Menu')),
+      appBar: const CustomAppBar(title: 'random menu'),
+      drawer: const CustomDrawer(),  // 32번 줄: CustomDrawer 추가
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
@@ -66,18 +74,18 @@ class _FoodListPageState extends State<FoodListPage> {
               });
             },
             child: Card(
-              shape: RoundedRectangleBorder(
-                side: BorderSide(
-                  color: _selectedIndex == index ? Colors.red : Colors.transparent,
-                  width: 2,
-                ),
-                borderRadius: BorderRadius.circular(4.0),
-              ),
+              // shape: RoundedRectangleBorder(
+              //   side: BorderSide(
+              //     color: _selectedIndex == index ? Colors.red : Colors.transparent,
+              //     width: 2,
+              //   ),
+              //   borderRadius: BorderRadius.circular(4.0),
+              // ),
               child: Container(
                 color: _isAnimating && _selectedIndex == index
                     ? Colors.purple.withOpacity(0.5)
                     : _selectedIndex == index
-                        ? Colors.red.withOpacity(0.5)
+                        ? Colors.deepPurple.withOpacity(0.5)
                         : Colors.transparent,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -96,6 +104,7 @@ class _FoodListPageState extends State<FoodListPage> {
         tooltip: 'Random Food',
         child: const Icon(Icons.shuffle),
       ),
+      bottomNavigationBar: const CustomBottomAppBar(),
     );
   }
 }

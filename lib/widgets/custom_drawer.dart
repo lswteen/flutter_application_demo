@@ -62,6 +62,16 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: const Icon(Icons.search),
+            title: const Text('recommendation'),
+            onTap: () {
+              Navigator.pop(context);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                Navigator.pushNamed(context, '/recommendation');
+              });
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Settings'),
             onTap: () {
