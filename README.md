@@ -26,11 +26,22 @@ lib/
 ├── main.dart  
 ├── models/  
 │ └── counter.dart  
+│ └── food_provider.dart  
+│ └── food.dart  
+│ └── item.dart  
 ├── ui/  
 │ ├── my_home_page.dart  
 │ ├── person_page.dart  
+│ ├── food_detail_page.dart  
+│ ├── food_list_page.dart  
+│ ├── item_detail_page.dart  
+│ ├── recipe_page.dart  
+│ ├── search_page.dart    
 └── widgets/  
-└── custom_drawer.dart  
+│ ├── custom_app_bar.dart  
+│ ├── custom_bottom_app_bar.dart  
+│ ├── custom_drawer.dart  
+└──--------------------
 
 
 ## 시작하기
