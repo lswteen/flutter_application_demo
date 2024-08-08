@@ -37,7 +37,7 @@ lib/
 │ ├── item_detail_page.dart  
 │ ├── recipe_page.dart  
 │ ├── search_page.dart    
-└── widgets/  
+├── widgets/  
 │ ├── custom_app_bar.dart  
 │ ├── custom_bottom_app_bar.dart  
 │ ├── custom_drawer.dart  
