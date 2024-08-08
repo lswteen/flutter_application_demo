@@ -22,12 +22,13 @@
 
 ## 프로젝트 구조
 
-lib/  
+lib/
+├─────────────────────────────  
 ├── main.dart  
 ├── models/  
-│ └── counter.dart  
-│ └── food_provider.dart  
-│ └── food.dart  
+│ ├── counter.dart  
+│ ├── food_provider.dart  
+│ ├── food.dart  
 │ └── item.dart  
 ├── ui/  
 │ ├── my_home_page.dart  
@@ -36,12 +37,12 @@ lib/
 │ ├── food_list_page.dart  
 │ ├── item_detail_page.dart  
 │ ├── recipe_page.dart  
-│ ├── search_page.dart    
+│ └── search_page.dart    
 ├── widgets/  
 │ ├── custom_app_bar.dart  
 │ ├── custom_bottom_app_bar.dart  
-│ ├── custom_drawer.dart  
-└──--------------------
+│ └── custom_drawer.dart  
+└──────────────────────────────
 
 
 ## 시작하기
