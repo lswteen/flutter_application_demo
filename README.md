@@ -30,6 +30,7 @@ lib/
 │ ├── food_provider.dart  
 │ ├── food.dart  
 │ └── item.dart  
+│ └── recipe.dart  
 ├── ui/  
 │ ├── my_home_page.dart  
 │ ├── person_page.dart  
@@ -39,6 +40,7 @@ lib/
 │ ├── recipe_page.dart  
 │ └── search_page.dart    
 ├── widgets/  
+│ ├── animated_recipe_text.dart  
 │ ├── custom_app_bar.dart  
 │ ├── custom_bottom_app_bar.dart  
 │ └── custom_drawer.dart  
