@@ -24,7 +24,7 @@ class Recipe {
 
   static Future<List<Recipe>> fetchRecipes() async {
     try {
-      final response = await http.get(Uri.parse('http://localhost:8080/recipes'));
+      final response = await http.get(Uri.parse('http://localhost:18082/recipes'));
 
       if (response.statusCode == 200) {
         List<dynamic> body = json.decode(response.body);

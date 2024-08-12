@@ -8,7 +8,7 @@ import 'ui/person_page.dart';
 import 'ui/search_page.dart';
 import 'ui/recipe_page.dart';
 import 'ui/food_list_page.dart';
-
+import 'ui/splash_screen.dart';
 
 
 void main() {
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const FoodListPage(), // 기본 페이지를 음식 목록 페이지로 설정
+      home: const SplashScreen(), // 기본 페이지를 스플래시 화면으로 설정
       //home: const MyHomePage(title: 'Green Market'),
       routes: {
         '/home' : (context) => const MyHomePage(title: 'Green Market'),
