@@ -9,6 +9,7 @@ import 'ui/search_page.dart';
 import 'ui/recipe_page.dart';
 import 'ui/food_list_page.dart';
 import 'ui/splash_screen.dart';
+import 'ui/roulette_wheel_page.dart'; // 추가된 import
 
 
 void main() {
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         '/search': (context) => const SearchPage(),
         '/recipe': (context) => const RecipePage(),  
         '/recommendation': (context) => const FoodListPage(),
+        '/roulette': (context) => RouletteWheelPage(), // 추가된 라우트
       },
     );
   }
